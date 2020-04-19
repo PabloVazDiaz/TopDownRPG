@@ -19,7 +19,7 @@ namespace RPG.Control
         void Update()
         {
             if (InteractWithCombat()) return;
-            InteractWithMovement();
+            if (InteractWithMovement()) return;
         }
 
         private bool InteractWithCombat()
@@ -29,28 +29,28 @@ namespace RPG.Control
             {
                 if (hit.collider.gameObject.GetComponent<CombatTarget>())
                 {
-                    if(Input.GetButtonDown("Fire1"))
-                        GetComponent<Fighter>().Attack();
-                    return true;
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        GetComponent<Fighter>().Attack(hit.collider.GetComponent<CombatTarget>());
+                    }
+                        return true;
                 }
-
             }
             return false;
         }
 
-        private void InteractWithMovement()
-        {
-            if (Input.GetButton("Fire1"))
-            {
-                MoveToCursor();
-            }
-        }
 
-        private void MoveToCursor()
+
+        private bool InteractWithMovement()
         {
             RaycastHit hit;
             if (Physics.Raycast(GetMouseRay(), out hit))
-                mover.MoveTo(hit.point);
+            {
+                if(Input.GetButton("Fire1"))
+                    mover.StartMoveAction(hit.point);
+                return true;
+            }
+            return false;
         }
 
         private static Ray GetMouseRay()
