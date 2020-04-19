@@ -1,29 +1,44 @@
-﻿using RPG.Movement;
+﻿using RPG.Core;
+using RPG.Movement;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
-        Transform target;
         [SerializeField] float weaponRange;
+        [SerializeField] float timeBetweenAttacks = 1f;
+
+        
+        Transform target;
+        float timeSinceLastAttack = 0;
 
         private void Update()
         {
+            timeSinceLastAttack += Time.deltaTime;
             if (target != null)
             {
                 if (!GetIsInRange())
                 {
                     GetComponent<Mover>().MoveTo(target.position);
-                    print("moviendo");
                 }
                 else
                 {
-                    GetComponent<Mover>().Stop();
-                    print("parando");
+                    GetComponent<Mover>().Cancel();
+                    AttackBehaviour();
                 }
             }
         }
+
+        private void AttackBehaviour()
+        {
+            if (timeSinceLastAttack >= timeBetweenAttacks)
+            {
+                GetComponent<Animator>().SetTrigger("attack");
+                timeSinceLastAttack = 0;
+            }
+        }
+
 
         private bool GetIsInRange()
         {
@@ -32,7 +47,13 @@ namespace RPG.Combat
 
         public void Attack(CombatTarget combatTarget)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
+        }
+
+        void Hit()
+        {
+
         }
 
         public void Cancel()

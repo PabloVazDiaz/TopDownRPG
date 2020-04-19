@@ -1,11 +1,11 @@
-﻿using RPG.Combat;
+﻿using RPG.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace RPG.Movement
 {
 
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
 
         Animator animator;
@@ -14,7 +14,7 @@ namespace RPG.Movement
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
-            animator = GetComponentInChildren<Animator>();
+            animator = GetComponent<Animator>();
         }
 
         // Update is called once per frame
@@ -25,7 +25,7 @@ namespace RPG.Movement
 
         public void StartMoveAction(Vector3 destination)
         {
-            GetComponent<Fighter>().Cancel();
+            GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
         }
 
@@ -35,7 +35,7 @@ namespace RPG.Movement
             navMeshAgent.isStopped = false;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             navMeshAgent.isStopped = true;
         }
@@ -47,5 +47,6 @@ namespace RPG.Movement
             float speed = localvelocity.z;
             animator.SetFloat("forwardSpeed", speed);
         }
+        
     }
 }
