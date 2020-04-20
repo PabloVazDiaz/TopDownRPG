@@ -17,7 +17,7 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            if (target != null && !target.IsDead())
+            if (CanAttack(target))
             {
                 if (!GetIsInRange())
                 {
@@ -31,10 +31,22 @@ namespace RPG.Combat
             }
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            Health healthToTest = combatTarget.GetComponent<Health>();
+            return healthToTest != null && !healthToTest.IsDead();
+        }
+        public bool CanAttack(Health healthToTest)
+        {
+            return healthToTest != null && !healthToTest.IsDead();
+        }
+
         private void AttackBehaviour()
         {
+            transform.LookAt(target.transform);
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
+                GetComponent<Animator>().ResetTrigger("cancelAttack");
                 GetComponent<Animator>().SetTrigger("attack");
                 timeSinceLastAttack = 0;
             }
@@ -54,11 +66,13 @@ namespace RPG.Combat
 
         void Hit()
         {
-            target.TakeDamage(weaponDamage);
+            if (target != null) 
+                target.TakeDamage(weaponDamage);
         }
 
         public void Cancel()
         {
+            GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("cancelAttack");
             target = null;
         }
