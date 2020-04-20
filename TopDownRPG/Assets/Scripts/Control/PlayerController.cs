@@ -31,10 +31,10 @@ namespace RPG.Control
                 if (target!=null)
                 {
                     Fighter fighter = GetComponent<Fighter>();
-                    if (!fighter.CanAttack(target)) continue;
+                    if (!fighter.CanAttack(target.gameObject)) continue;
                     if (Input.GetButtonDown("Fire1"))
                     {
-                        fighter.Attack(hit.collider.GetComponent<CombatTarget>());
+                        fighter.Attack(hit.transform.gameObject);
                     }
                         return true;
                 }
