@@ -573,6 +573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5936567920806358362, guid: 532b091d33b64cf41b3aa251fdb8abf0,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 532b091d33b64cf41b3aa251fdb8abf0, type: 3}
 --- !u!1 &1283109115 stripped
@@ -629,17 +634,17 @@ PrefabInstance:
     - target: {fileID: 3867854560163379734, guid: cd9539ffa61fd6341bbac3ba425dca27,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.24
+      value: -16.68
       objectReference: {fileID: 0}
     - target: {fileID: 3867854560163379734, guid: cd9539ffa61fd6341bbac3ba425dca27,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.23
+      value: 3.53
       objectReference: {fileID: 0}
     - target: {fileID: 3867854560163379734, guid: cd9539ffa61fd6341bbac3ba425dca27,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.84
+      value: 1.66
       objectReference: {fileID: 0}
     - target: {fileID: 3867854560163379734, guid: cd9539ffa61fd6341bbac3ba425dca27,
         type: 3}
@@ -957,6 +962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936567920806358362, guid: 532b091d33b64cf41b3aa251fdb8abf0,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 532b091d33b64cf41b3aa251fdb8abf0, type: 3}
