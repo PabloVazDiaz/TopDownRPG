@@ -37,7 +37,7 @@ namespace RPG.Control
                 {
                     Fighter fighter = GetComponent<Fighter>();
                     if (!fighter.CanAttack(target.gameObject)) continue;
-                    if (Input.GetButtonDown("Fire1"))
+                    if (Input.GetButton("Fire1"))
                     {
                         fighter.Attack(hit.transform.gameObject);
                     }
@@ -55,7 +55,7 @@ namespace RPG.Control
             if (Physics.Raycast(GetMouseRay(), out hit))
             {
                 if(Input.GetButton("Fire1"))
-                    mover.StartMoveAction(hit.point);
+                    mover.StartMoveAction(hit.point, 1f);
                 return true;
             }
             return false;
