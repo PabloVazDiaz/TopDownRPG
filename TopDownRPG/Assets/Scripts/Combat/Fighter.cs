@@ -80,10 +80,17 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
+        //Animation Event
         void Hit()
         {
             if (target != null) 
                 target.TakeDamage(currentWeapon.GetWeaponDamage());
+        }
+
+        //Animation Event
+        void Shoot()
+        {
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
         }
 
         public void Cancel()

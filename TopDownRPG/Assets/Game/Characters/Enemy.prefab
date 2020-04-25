@@ -44,6 +44,22 @@ MonoBehaviour:
   waypointTolerance: 2
   waypointDwellTime: 1.75
   patrolSpeedFraction: 0.2
+--- !u!54 &6579751805016655034
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762320099160570849}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &5936567921886242087
 PrefabInstance:
   m_ObjectHideFlags: 0
