@@ -134,6 +134,33 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6913666843535613481, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: caeb104e4996090448fd3524dd3f6771,
+        type: 2}
+    - target: {fileID: 6913666843535613481, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 9016521448444958662}
+    - target: {fileID: 6913666843535613481, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: caeb104e4996090448fd3524dd3f6771,
+        type: 2}
+    - target: {fileID: 6913666843535613481, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 9016521448444958662}
+    - target: {fileID: 6913666843535613481, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 9016521448445032366}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 202c97f4dac083149b6742f58871d0d4, type: 3}
 --- !u!1 &5762320099160570849 stripped
@@ -1306,3 +1333,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9505156, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &9016521448445032366 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9016521448445419074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9016521448444958662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9016521448445419074}
+  m_PrefabAsset: {fileID: 0}
