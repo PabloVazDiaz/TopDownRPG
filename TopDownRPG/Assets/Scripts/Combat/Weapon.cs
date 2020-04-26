@@ -14,6 +14,7 @@ namespace RPG.Combat
         [SerializeField] float weaponRange;
         [SerializeField] float weaponDamage;
         [SerializeField] Projectile projectile = null;
+        
 
         const string weaponName = "Weapon";
 
@@ -28,8 +29,17 @@ namespace RPG.Combat
                 GameObject weapon = Instantiate(weaponPrefab, handTransform);
                 weapon.name = weaponName;
             }
-            if (animatorOverride != null) 
+            if (animatorOverride != null)
+            {
                 animator.runtimeAnimatorController = animatorOverride;
+            }
+            else
+            {
+                var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+                if (overrideController != null)
+                    animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+            }
+
         }
 
         private void DestroyOldWeapon(Transform rightHand, Transform leftHand)

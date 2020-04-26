@@ -7,6 +7,10 @@ namespace RPG.Combat
     {
         [SerializeField] float speed;
         [SerializeField] bool isHoming = false;
+        [SerializeField] GameObject hitEffect = null;
+        [SerializeField] float maxLifeTime = 10f;
+        [SerializeField] GameObject[] DestroyOnHit = null;
+        [SerializeField] float lifeAfterHit = 0.2f;
 
         Health target;
         float damage = 0;
@@ -38,17 +42,27 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+            Destroy(gameObject, maxLifeTime);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (target.IsDead())
-                return;
-            if(other.GetComponent<Health>() == target)
+            if (target.IsDead()) return;
+            if (other.GetComponent<Health>() != target) return;
+
+            target.TakeDamage(damage);
+            speed = 0;
+            if (hitEffect != null)
             {
-                target.TakeDamage(damage);
-                Destroy(gameObject);
+                Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
+            
+            foreach (GameObject toDestroy in DestroyOnHit)
+            {
+                Destroy(toDestroy);
+            }
+
+            Destroy(gameObject, lifeAfterHit);
         }
     }
 }
