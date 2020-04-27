@@ -12,6 +12,7 @@ namespace RPG.Combat
         [SerializeField] bool isRightHanded = true;
         [SerializeField] float weaponRange;
         [SerializeField] float weaponDamage;
+        [SerializeField] float percentageBonus = 0;
         [SerializeField] Projectile projectile = null;
         
 
@@ -72,6 +73,11 @@ namespace RPG.Combat
         public float GetWeaponDamage()
         {
             return weaponDamage;
+        }
+
+        public float GetPercentageBonus()
+        {
+            return percentageBonus;
         }
     }
 }

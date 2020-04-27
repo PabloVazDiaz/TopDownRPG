@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: characterClass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7500576492797938469, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
         type: 3}
       propertyPath: hitPoints
