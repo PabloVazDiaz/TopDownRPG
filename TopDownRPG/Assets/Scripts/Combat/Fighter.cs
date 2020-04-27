@@ -3,6 +3,7 @@ using RPG.Movement;
 using RPG.Saving;
 using UnityEngine;
 using RPG.Resources;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -18,6 +19,7 @@ namespace RPG.Combat
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon;
+        Animator animator;
 
         private void Start()
         {
@@ -28,7 +30,7 @@ namespace RPG.Combat
         public void EquipWeapon(Weapon weapon)
         {
             currentWeapon = weapon;
-            Animator animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
             
         }
@@ -65,8 +67,8 @@ namespace RPG.Combat
             transform.LookAt(target.transform);
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
-                GetComponent<Animator>().ResetTrigger("cancelAttack");
-                GetComponent<Animator>().SetTrigger("attack");
+                animator.ResetTrigger("cancelAttack");
+                animator.SetTrigger("attack");
                 timeSinceLastAttack = 0;
             }
         }
@@ -93,19 +95,19 @@ namespace RPG.Combat
         void Hit()
         {
             if (target != null) 
-                target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
+                target.TakeDamage(gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage));
         }
 
         //Animation Event
         void Shoot()
         {
-            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage));
         }
 
         public void Cancel()
         {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("cancelAttack");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("cancelAttack");
             target = null;
             GetComponent<Mover>().Cancel();
         }

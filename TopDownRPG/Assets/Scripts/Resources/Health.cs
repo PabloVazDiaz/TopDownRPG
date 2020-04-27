@@ -62,16 +62,27 @@ namespace RPG.Resources
             hitPoints = baseStats.GetStat(Stat.Health);
         }
 
+        public float GetHitPoints()
+        {
+            return hitPoints;
+        }
+
+        public float GetMaxHitPoints()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
+
+
+        public float GetPercentage()
+        {
+            return hitPoints / GetComponent<BaseStats>().GetStat(Stat.Health) * 100;
+        }
 
         public object CaptureState()
         {
             return hitPoints;
         }
 
-        public float GetPercentage()
-        {
-            return hitPoints / GetComponent<BaseStats>().GetStat(Stat.Health) * 100;
-        }
 
         public void RestoreState(object state)
         {
