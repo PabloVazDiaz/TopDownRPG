@@ -9,13 +9,14 @@ namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        [SerializeField] float hitPoints = 100f;
+        float hitPoints = -1f;
 
         bool isDead = false;
 
         private void Start()
         {
-            hitPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            if (hitPoints <= 0f) 
+                hitPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
 
