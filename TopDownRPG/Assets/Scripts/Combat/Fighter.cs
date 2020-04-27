@@ -93,13 +93,13 @@ namespace RPG.Combat
         void Hit()
         {
             if (target != null) 
-                target.TakeDamage(currentWeapon.GetWeaponDamage());
+                target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
         }
 
         //Animation Event
         void Shoot()
         {
-            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
         }
 
         public void Cancel()

@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
+using System;
 
 namespace RPG.Resources
 {
@@ -14,7 +15,7 @@ namespace RPG.Resources
 
         private void Start()
         {
-            hitPoints = GetComponent<BaseStats>().GetHealth();
+            hitPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
 
@@ -24,14 +25,16 @@ namespace RPG.Resources
         }
 
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             hitPoints = Mathf.Max(hitPoints - damage, 0);
             if (!isDead && hitPoints <= 0 )
             {
                 Die();
+                AwardExperience(instigator);
             }
         }
+
 
         private void Die()
         {
@@ -41,6 +44,14 @@ namespace RPG.Resources
             GetComponent<NavMeshAgent>().enabled = false;
         }
 
+        private void AwardExperience(GameObject instigator)
+        {
+            float XPReward = GetComponent<BaseStats>().GetStat(Stat.ExperienceReward);
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience != null) 
+                experience.GainExperience(XPReward);
+        }
+
         public object CaptureState()
         {
             return hitPoints;
@@ -48,13 +59,14 @@ namespace RPG.Resources
 
         public float GetPercentage()
         {
-            return hitPoints / GetComponent<BaseStats>().GetHealth() * 100;
+            return hitPoints / GetComponent<BaseStats>().GetStat(Stat.Health) * 100;
         }
 
         public void RestoreState(object state)
         {
             hitPoints = (float)state;
-            TakeDamage(0);
+            if (hitPoints <= 0)
+                Die();
         }
     }
 }

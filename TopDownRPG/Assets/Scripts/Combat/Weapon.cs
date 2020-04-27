@@ -57,11 +57,11 @@ namespace RPG.Combat
             return projectile != null;
         }
 
-        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target)
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject instigator)
         {
             Transform handTransform = isRightHanded ? rightHand : leftHand;
             Projectile projectileInstance = Instantiate(projectile, handTransform.position, Quaternion.identity);
-            projectileInstance.setTarget(target, weaponDamage);
+            projectileInstance.setTarget(target, weaponDamage, instigator);
         }
 
         public float GetWeaponRange()
