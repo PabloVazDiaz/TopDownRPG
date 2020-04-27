@@ -8,6 +8,10 @@ namespace RPG.Resources
 
         [SerializeField] float experiencePoints = 0;
 
+        public float GetExperience()
+        {
+            return experiencePoints;
+        }
 
         public void GainExperience(float experience)
         {
