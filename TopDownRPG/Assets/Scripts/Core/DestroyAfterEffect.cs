@@ -7,6 +7,8 @@ namespace RPG.Core
     public class DestroyAfterEffect : MonoBehaviour
     {
 
+        [SerializeField] GameObject targetToDestroy = null;
+
         ParticleSystem ps;
         // Start is called before the first frame update
         void Start()
@@ -18,7 +20,16 @@ namespace RPG.Core
         void Update()
         {
             if (!ps.IsAlive())
-                Destroy(gameObject);
+            {
+                if (targetToDestroy == null)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(targetToDestroy);
+                }
+            }
         }
     }
 

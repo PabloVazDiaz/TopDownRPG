@@ -10,12 +10,17 @@ namespace RPG.SceneManagement
     {
         const string defaulSaveFile = "save";
 
-        IEnumerator Start()
+        private void Awake()
         {
+            StartCoroutine(LoadLastScene());
+        }
+
+        IEnumerator LoadLastScene()
+        {
+            yield return GetComponent<SavingSystem>().LoadLastScene(defaulSaveFile);
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeOutImmediate();
            
-            yield return GetComponent<SavingSystem>().LoadLastScene(defaulSaveFile);
             yield return fader.FadeIn(0.2f);
         }
 

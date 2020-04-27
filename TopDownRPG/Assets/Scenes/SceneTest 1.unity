@@ -9908,6 +9908,12 @@ PrefabInstance:
       propertyPath: startingLevel
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 236432866984890311, guid: 18ffc5cdaa301ee4cb131b83ac252ad9,
+        type: 3}
+      propertyPath: LvlUpFX
+      value: 
+      objectReference: {fileID: 1646596594845209771, guid: 80d46662a7689c742a494e0cd0d89bf9,
+        type: 3}
     - target: {fileID: 481246146298200048, guid: 18ffc5cdaa301ee4cb131b83ac252ad9,
         type: 3}
       propertyPath: m_IsActive
@@ -10128,6 +10134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LookaheadTime
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8001022712094153536, guid: 18ffc5cdaa301ee4cb131b83ac252ad9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ffc5cdaa301ee4cb131b83ac252ad9, type: 3}
