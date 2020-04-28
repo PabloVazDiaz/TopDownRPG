@@ -4,26 +4,45 @@ using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
 using System;
+using GameDevTV.Utils;
 
 namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        float hitPoints = -1f;
+
+        LazyValue<float> hitPoints;
         BaseStats baseStats;
 
         bool isDead = false;
 
-        private void Start()
+        private void Awake()
         {
             baseStats = GetComponent<BaseStats>();
-            if (hitPoints <= 0f) 
-                hitPoints = baseStats.GetStat(Stat.Health);
-            baseStats.onLevelUp += RegenerateHealth;
-
+            hitPoints = new LazyValue<float>(GetInitialHitpoints);
+        }
+            
+        private float GetInitialHitpoints()
+        {
+            return baseStats.GetStat(Stat.Health);
         }
 
-       
+        private void Start()
+        {
+            hitPoints.ForceInit();
+        }
+
+        private void OnEnable()
+        {
+            baseStats.onLevelUp += RegenerateHealth;
+        }
+
+        private void OnDisable()
+        {
+            baseStats.onLevelUp -= RegenerateHealth;
+        }
+            
+
         public bool IsDead()
         {
             return isDead;
@@ -32,8 +51,8 @@ namespace RPG.Resources
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            hitPoints = Mathf.Max(hitPoints - damage, 0);
-            if (!isDead && hitPoints <= 0 )
+            hitPoints.value = Mathf.Max(hitPoints.value - damage, 0);
+            if (!isDead && hitPoints.value <= 0 )
             {
                 Die();
                 AwardExperience(instigator);
@@ -59,12 +78,12 @@ namespace RPG.Resources
 
         private void RegenerateHealth()
         {
-            hitPoints = baseStats.GetStat(Stat.Health);
+            hitPoints.value = baseStats.GetStat(Stat.Health);
         }
 
         public float GetHitPoints()
         {
-            return hitPoints;
+            return hitPoints.value;
         }
 
         public float GetMaxHitPoints()
@@ -75,19 +94,19 @@ namespace RPG.Resources
 
         public float GetPercentage()
         {
-            return hitPoints / GetComponent<BaseStats>().GetStat(Stat.Health) * 100;
+            return hitPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health) * 100;
         }
 
         public object CaptureState()
         {
-            return hitPoints;
+            return hitPoints.value;
         }
 
 
         public void RestoreState(object state)
         {
-            hitPoints = (float)state;
-            if (hitPoints <= 0)
+            hitPoints.value = (float)state;
+            if (hitPoints.value <= 0)
                 Die();
         }
     }
