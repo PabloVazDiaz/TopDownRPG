@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using RPG.Movement;
 using System;
-using RPG.Resources;
+using RPG.Attributes;
 using UnityEngine.AI;
 
 namespace RPG.Control

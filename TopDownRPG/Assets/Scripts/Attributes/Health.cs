@@ -3,11 +3,10 @@ using UnityEngine.AI;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
-using System;
 using GameDevTV.Utils;
 using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
