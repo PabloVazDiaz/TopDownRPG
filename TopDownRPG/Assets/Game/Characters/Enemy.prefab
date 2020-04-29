@@ -60,6 +60,7 @@ MonoBehaviour:
   waypointTolerance: 2
   waypointDwellTime: 1.75
   patrolSpeedFraction: 0.2
+  agroCooldownTime: 4
 --- !u!1001 &1375265502465616438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ PrefabInstance:
     - target: {fileID: 8922439659518603756, guid: 70bf63cabc69da440bb22f162a61ed02,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8922439659518603756, guid: 70bf63cabc69da440bb22f162a61ed02,
         type: 3}
@@ -148,8 +149,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
         type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
       propertyPath: hitPoints
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8436000072233996923}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 8436000072233996923}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggrevate
+      objectReference: {fileID: 0}
+    - target: {fileID: -654180360153241037, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1101416573, guid: 202c97f4dac083149b6742f58871d0d4, type: 3}
       propertyPath: m_StoppingDistance
@@ -219,7 +275,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3492402666311683045, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3975865990484510626, guid: 202c97f4dac083149b6742f58871d0d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248003526309412350, guid: 202c97f4dac083149b6742f58871d0d4,
         type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -4,6 +4,7 @@ using RPG.Movement;
 using UnityEngine;
 using RPG.Attributes;
 using GameDevTV.Utils;
+using System;
 
 namespace RPG.Control
 {
@@ -16,6 +17,8 @@ namespace RPG.Control
         [SerializeField] float waypointDwellTime = 1f;
         [Range(0,1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
+        [SerializeField] float agroCooldownTime = 4f;
+        [SerializeField] float shoutDistance = 3f;
 
         Health health;
         Fighter fighter;
@@ -26,6 +29,7 @@ namespace RPG.Control
         float timeSinceLastSawPlayer = Mathf.Infinity;
         int currentWaypointIndex = 0;
         float timeSinceArrivedWaypoint;
+        float timeSinceAggrevated = Mathf.Infinity;
 
         private void Awake()
         {
@@ -51,9 +55,9 @@ namespace RPG.Control
         {
             if (health.IsDead()) return;
 
-            bool isInChaseRange = Vector3.Distance(player.transform.position, transform.position) <= chaseDistance;
 
-            if (isInChaseRange && fighter.CanAttack(player))
+
+            if (IsAggrevated() && fighter.CanAttack(player))
             {
                 timeSinceLastSawPlayer = 0;
                 AttackBehaviour();
@@ -66,8 +70,26 @@ namespace RPG.Control
             {
                 GuardBehaviour();
             }
+            UpdateTimers();
+        }
+
+        private void UpdateTimers()
+        {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedWaypoint += Time.deltaTime;
+            timeSinceAggrevated += Time.deltaTime;
+        }
+
+        private bool IsAggrevated()
+        {
+            float distaceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+            return distaceToPlayer <= chaseDistance || timeSinceAggrevated < agroCooldownTime;
+        }
+
+        public void Aggrevate()
+        {
+            timeSinceAggrevated = 0;
         }
 
         private void GuardBehaviour()
@@ -113,6 +135,18 @@ namespace RPG.Control
         private void AttackBehaviour()
         {
             fighter.Attack(player);
+            AggrevateNearbyEnemies();
+        }
+
+        private void AggrevateNearbyEnemies()
+        {
+            Collider[] entities = Physics.OverlapSphere(transform.position, shoutDistance);
+            foreach (Collider collider in entities)
+            {
+                AIController enemy = collider.GetComponent<AIController>();
+                if (enemy != null)
+                    enemy.Aggrevate();
+            }
         }
 
         private void OnDrawGizmosSelected()
