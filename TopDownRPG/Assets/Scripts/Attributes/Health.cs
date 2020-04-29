@@ -88,6 +88,11 @@ namespace RPG.Attributes
                 experience.GainExperience(XPReward);
         }
 
+        public void Heal(float amount)
+        {
+            hitPoints.value = Mathf.Min(hitPoints.value + amount, GetMaxHitPoints());
+        }
+
         private void RegenerateHealth()
         {
             hitPoints.value = baseStats.GetStat(Stat.Health);
