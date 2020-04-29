@@ -6,6 +6,7 @@ namespace RPG.Stats
         Player,
         Grunt,
         Archer,
-        Mage
+        Mage,
+        Knight
     }
 }
