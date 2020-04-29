@@ -14,7 +14,7 @@ namespace RPG.Core
 
 
         // Update is called once per frame
-        void Update()
+        void LateUpdate()
         {
             transform.forward = camera.transform.forward;
         }

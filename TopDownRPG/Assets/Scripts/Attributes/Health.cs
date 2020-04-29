@@ -19,7 +19,7 @@ namespace RPG.Attributes
 
         }
 
-
+        [SerializeField] UnityEvent onDie;
 
         LazyValue<float> hitPoints;
         BaseStats baseStats;
@@ -65,6 +65,7 @@ namespace RPG.Attributes
             takeDamage.Invoke(damage);
             if (!isDead && hitPoints.value <= 0 )
             {
+                onDie.Invoke();
                 Die();
                 AwardExperience(instigator);
             }

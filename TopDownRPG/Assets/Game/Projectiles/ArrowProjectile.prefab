@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6918129176263014783}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &2384956246032060131
 TrailRenderer:
@@ -271,9 +271,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1803824859753294856, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 151fa7778dc9cf14ba998127d188283b, type: 3}
+    - target: {fileID: 3423372197245919528, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 94fc62564eabf2e429355affe6bee585, type: 3}
     - target: {fileID: 4074160051369917736, guid: c087fe287d01034468c2690923a77f81,
         type: 3}
       propertyPath: DestroyOnHit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074160051369917736, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4074160051369917736, guid: c087fe287d01034468c2690923a77f81,
@@ -291,6 +306,26 @@ PrefabInstance:
         type: 3}
       propertyPath: lifeAfterHit
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074160051369917736, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074160051369917736, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: onHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528676783142310695, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530861700757170744, guid: c087fe287d01034468c2690923a77f81,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5784154085571882819, guid: c087fe287d01034468c2690923a77f81,
         type: 3}
